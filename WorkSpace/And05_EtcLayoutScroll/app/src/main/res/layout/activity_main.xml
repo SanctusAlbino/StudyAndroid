@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+   <View
+       android:id="@+id/view"
+       android:background="#123"
+       android:layout_width="match_parent"
+       android:layout_height="100dp"/>
+
+    <Button
+        android:id="@+id/btn"
+        android:text="스크롤뷰 자바로 제어"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    <HorizontalScrollView
+        android:id="@+id/hzs"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <ScrollView
+        android:id="@+id/sv"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <!--1. java코드에서 사용하게 처리해보기
+        2. textView에는 append라는 문자열을 붙이는 메소드가 있다.
+        해당하는 메소드를 이용해서 텍스트뷰의 문자열이 안드로이드 화면 벗어나게 처리하기-->
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+
+        <ImageView
+            android:id="@+id/imgv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_launcher_foreground"/>
+
+    <TextView
+        android:id="@+id/tv_text"
+        android:text="안니영하세요"
+        android:layout_width="600dp"
+        android:layout_height="wrap_content"/>
+        </LinearLayout>
+</ScrollView>
+
+    </HorizontalScrollView>
+</LinearLayout>
