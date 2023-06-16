@@ -10,6 +10,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+
 public class LoginActivity extends AppCompatActivity {
     EditText login_id, login_pw;
     Button btn;
@@ -38,9 +41,23 @@ public class LoginActivity extends AppCompatActivity {
                 // => 일반클래스에서도 그래픽처리가 가능하게 만드려면 Activity가 Context라는 것을 파라메터로 보내줬을때 가능함.
 
                 Log.d("글자","onCreate:" + login_id.getText().toString());
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+
 
                 if (login_id.getText().toString().equals("admin")&&login_pw.getText().toString().equals("admin1234")) {
+                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                    intent.putExtra("strkey", login_id.getText().toString()+"intent");
+                    intent.putExtra("intkey", 10);
+                    LoginDTO dto = new LoginDTO(login_id.getText().toString()+"1", login_pw.getText().toString()+"1");
+                    intent.putExtra("dtokey", dto);
+
+                    ArrayList<LoginDTO> list = new ArrayList<>(); //초기화식 , LoginDTO타입을 묶어놓을 공간마련
+                    list.add(new LoginDTO("a1", "b1"));
+                    list.add(new LoginDTO("a2", "b2"));
+                    list.add(new LoginDTO("a3", "b3"));
+                    list.add(new LoginDTO("a4", "b4"));
+                    list.add(new LoginDTO("a5", "b5"));
+                    intent.putExtra("list",list); //startActivity메소드 실행 전 데이터 담는 처리를 끝낸다.
+
                     startActivity(intent);
                     Toast.makeText(LoginActivity.this, "성공", Toast.LENGTH_SHORT).show();
                 } else {
@@ -49,7 +66,20 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
+
             }
         });
     }
+
+    public class kghVO implements Serializable{
+
+    }
+
+    public class kghClass implements Serializable {
+
+    }
+    public void method (Serializable k){
+        //역직력화 : kghClass k2 = (kghClass) k ;
+    }
+
 }
