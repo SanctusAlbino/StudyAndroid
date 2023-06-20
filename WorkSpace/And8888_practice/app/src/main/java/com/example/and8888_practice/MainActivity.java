@@ -29,7 +29,11 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View v) {
                 Log.d("아무거나1", "onClick: "+ Integer.parseInt(num1.getText().toString()));
                 Log.d("아무거나2", "onClick: "+Integer.parseInt(num2.getText().toString()));
-                Log.d("아무거", "onClick: "+);
+               // btn_sum.get = Integer.parseInt(num1.getText().toString())+Integer.parseInt(num2.getText().toString());
+                Log.d("아무거", "onClick: "+(Integer.parseInt(num1.getText().toString())+Integer.parseInt(num2.getText().toString())));
+                // String result = "java Version11"     =>java Version11
+                // String result = 1 + 1  " java Version "    => 2java Version
+
 
             }
         });
