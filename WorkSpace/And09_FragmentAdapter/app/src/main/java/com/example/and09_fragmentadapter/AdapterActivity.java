@@ -8,7 +8,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.FrameLayout;
 
+import com.example.and09_fragmentadapter.Practice.MelonFragment;
+import com.example.and09_fragmentadapter.grid.GridFragment;
 import com.example.and09_fragmentadapter.listv.ListFragment;
+import com.example.and09_fragmentadapter.recyler.NormalClass;
+import com.example.and09_fragmentadapter.recyler.RecyclerFragment;
 
 public class AdapterActivity extends AppCompatActivity {
     //ListView listv;
@@ -45,9 +49,36 @@ public class AdapterActivity extends AppCompatActivity {
             }
         });
 
+        btn_grid = findViewById(R.id.btn_grid);
 
+        btn_grid.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                manager.beginTransaction().replace(R.id.container_fl2, new GridFragment()).commit();
+            }
+        });
 
+        btn_practice= findViewById(R.id.btn_practice);
+
+        btn_practice.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                manager.beginTransaction().replace(R.id.container_fl2, new MelonFragment()).commit();
+            }
+        });
+
+        btn_recy = findViewById(R.id.btn_recy);
+
+        btn_recy.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                manager.beginTransaction().replace(R.id.container_fl2, new RecyclerFragment()).commit();
+            }
+        });
+
+        new NormalClass().testToast(this, "쓰고 싶은거 나는 액티비티");
 //        listv = findViewById(R.id.listv);
 //
 //        listv.setOnItemClickListener(new AdapterView.OnItemClickListener() {

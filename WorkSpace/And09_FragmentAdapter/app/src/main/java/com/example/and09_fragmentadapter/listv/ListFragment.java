@@ -26,6 +26,11 @@ public class ListFragment extends Fragment {
 
         ArrayList<ListDTO> list = new ArrayList<>();
         list.add(new ListDTO(R.drawable.img1, "이름1", "ㅇㄹ"));
+        list.add(new ListDTO(R.drawable.img2, "이름2", "ㅇd"));
+        list.add(new ListDTO(R.drawable.img3, "이름3", "ㅇsd"));
+        list.add(new ListDTO(R.drawable.img4, "이름4", "ㅇad"));
+        list.add(new ListDTO(R.drawable.img5, "이름5", "ㅇadf"));
+        list.add(new ListDTO(R.drawable.img1, "이름1", "ㅇㄹ"));
         list.add(new ListDTO(R.drawable.img2, "이름2", "ㅇㄹ"));
         list.add(new ListDTO(R.drawable.img3, "이름3", "ㅇㄹ"));
         list.add(new ListDTO(R.drawable.img4, "이름4", "ㅇㄹ"));

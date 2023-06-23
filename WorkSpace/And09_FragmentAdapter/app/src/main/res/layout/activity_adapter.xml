@@ -34,7 +34,7 @@
             android:text="연습"/>
     </LinearLayout>
     <FrameLayout
-        android:background="#FFEB3B"
+        android:background="#60ED65"
         android:id="@+id/container_fl2"
         android:layout_width="match_parent"
         android:layout_height="match_parent"/>
