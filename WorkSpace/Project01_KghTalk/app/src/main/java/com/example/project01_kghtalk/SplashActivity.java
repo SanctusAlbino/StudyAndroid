@@ -32,6 +32,7 @@ public class SplashActivity extends AppCompatActivity {
         dialog.setCancelable(false);
         dialog.show();
 
+
         //Splash Screen : 데이터 로딩이나, 앱 실행시, 유저에게 로고를 노출함으로써 각인효과를 주고 기다리는 시간을 조금 더 짧게 느끼게 함.
 
         // Thread : Handler

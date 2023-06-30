@@ -1,5 +1,6 @@
 package com.example.project01_kghtalk.friend;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -10,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.project01_kghtalk.MainActivity;
 import com.example.project01_kghtalk.R;
 import com.example.project01_kghtalk.databinding.FragmentFriendBinding;
 
@@ -25,8 +27,11 @@ public class FriendFragment extends Fragment {
                              Bundle savedInstanceState) {
         binding = FragmentFriendBinding.inflate(inflater, container, false);
 
-        binding.recvFriend.setAdapter(new FriendAdapter(getList()));
+        binding.recvFriend.setAdapter(new FriendAdapter(getList(), getContext()));
         binding.recvFriend.setLayoutManager(new LinearLayoutManager(getContext()));
+
+        //Intent intent = new Intent(getContext() , MainActivity.class);
+        //startActivity(intent);
 
         return binding.getRoot();// 최상위 레이아웃을 의미한다.
 
