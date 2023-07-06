@@ -35,8 +35,8 @@ public class CustomerController {
 	@Autowired @Qualifier("hanul") SqlSession sql;
 	
 	@RequestMapping(value="/list.cu", produces = "text/html;charset=utf-8")
-	public String cu(CustomerVO vo) {
-		System.out.println("누군가 다녀감");
+	public String cu(CustomerVO vo, String param) {
+		System.out.println("누군가 다녀감"+ param);
 		List<CustomerVO> vvo = sql.selectList("test.list", vo);
 		Gson gson = new Gson();
 		//Object(List, DTO등 ) => String json으로 바꾸는 메소드 toJson
