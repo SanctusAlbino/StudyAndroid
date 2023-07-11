@@ -1,4 +1,4 @@
-package com.example.and00_login;
+package com.example.project02_lastproject.common;
 
 import android.app.ProgressDialog;
 import android.content.Context;
@@ -11,21 +11,20 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
-public class CommonConnection {
-    // Retrofit을 매번 새로 인스턴스화해서 사용하는것은 매우 귀찮음
-    // 재사용이 가능한 구조를 하나만들고 재사용하면 편함.
+public class CommonConn {
     private final String TAG = "CommonConn";
     private HashMap<String, Object> paramMap;
     private Context context; //화면위에 토스트, ProgressDialog를 보여주기위한 용도
     private String mapping; //list.cu, login 등의 맵핑을 받아오기위한것.
-    private ProgressDialog dialog; //모양이 다양하게 커스텀이 가능하니 나중에 바꾸면 된다.
-    private KghCallBack callBack;
-    public CommonConnection(Context context, String mapping) {
+    private ProgressDialog dialog;
+    private AbCallBack callBack;
+
+    public CommonConn(Context context, String mapping) {
         this.context = context;
         this.mapping = mapping;
         this.paramMap = new HashMap<>();
-        Log.d("콜백", "콜백(인터페이스의 메모리):"+ callBack);
     }
+
     public void addParamMap(String key, Object value){
         if(key == null) {
             Log.e(TAG, "파라메터 key값이 null이 들어와서 추가 안했음.");
@@ -35,7 +34,7 @@ public class CommonConnection {
             paramMap.put(key,value);
         }
     }
-    //enque(전송 실행전 해야할 코드를 넣어줄 메소드 구현, (ProgressDialog보이게 처리))
+
     private void onPreExcute(){
         if (context != null && dialog == null){
             dialog = new ProgressDialog(context);
@@ -47,15 +46,10 @@ public class CommonConnection {
         }
     }
 
-    //enque가 실제로 되어야 하는 부분. (파라메터등을 이용해서 실제로 Spring에 전송한다.)
-    public void onExcute(KghCallBack callBack){
+    public void onExcute(AbCallBack callBack){
         onPreExcute();
-        //2. 옵저버 2
-        Log.d("콜백", "콜백(인터페이스의 메모리):"+ this.callBack);
         this.callBack = callBack;
-        Log.d("콜백", "콜백(인터페이스의 메모리): this"+ this.callBack);
         RetrofitInterface api = new RetrofitClient().getRetrofit().create(RetrofitInterface.class);
-        //GET방식인지 POST방식인지를 받아와서 처리도 가능하다.(현재는 어려우니까 POST로 고정시켜놓기)
         api.clientPostMethod(mapping, paramMap).enqueue(new Callback<String>() {
             @Override
             public void onResponse(Call<String> call, Response<String> response) {
@@ -72,18 +66,15 @@ public class CommonConnection {
             }
         });
     }
-
     private void onPostExcute(boolean isResult , String data) {
         if (dialog != null) {
             dialog.dismiss();
         }
         callBack.onResult(isResult, data);
     }
-        // 옵저버 패턴 . 감시하다가 어떤 작업이 끝나면 특정 메소드를 실행함. : View.OnClickListner .
-        // 1번
-        public interface KghCallBack{
-            public void onResult(boolean isResult, String data);
-        }
 
 
+    public interface AbCallBack{
+        public void onResult(boolean isResult, String data);
+    }
 }
