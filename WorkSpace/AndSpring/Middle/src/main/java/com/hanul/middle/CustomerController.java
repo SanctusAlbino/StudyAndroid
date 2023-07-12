@@ -51,6 +51,28 @@ public class CustomerController {
 		return new Gson().toJson(vo);
 	}
 	
+	@RequestMapping(value="/delete.cu", produces = "text/html;charset=utf-8")
+	public String delete(int id) {
+		
+		int result = sql.delete("test.delete", id);
+		System.out.println("성공여부:"+ result );
+		return "aas";
+	}
+	
+	@RequestMapping(value="/insert.cu", produces = "text/html;charset=utf-8")
+	public String insert(CustomerVO vo) {
+		int result = sql.insert("test.insert", vo );
+		System.out.println("들어갔나?"+ result);
+		return "aaa";
+	}
+	
+	@RequestMapping(value="/update.cu", produces = "text/html;charset=utf-8")
+	public String update(CustomerVO vo) {
+		int result = sql.insert("test.update", vo );
+		System.out.println("수정됬나?"+ result);
+		return "bbbb";
+	}
+	
 	
 //	@Autowired TestBean bean1;
 //	TestBean bean2;
