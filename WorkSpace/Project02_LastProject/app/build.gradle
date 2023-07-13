@@ -44,4 +44,10 @@ dependencies {
     implementation group: 'com.squareup.retrofit2', name: 'retrofit', version: '2.9.0'
 
     implementation group: 'com.squareup.retrofit2', name: 'converter-scalars', version: '2.9.0'
+
+    //MainActivity에 바텀네비게이션 외부 라이브러리사용
+    implementation 'com.github.ibrahimsn98:SmoothBottomBar:1.7.9'
+
+    //리사이클러뷰나 목록을 가진 뷰가 맨위로 스크롤이되면 새로고침을 하는 디자인이 나옴
+    implementation "androidx.swiperefreshlayout:swiperefreshlayout:1.1.0"
 }

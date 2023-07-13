@@ -2,11 +2,14 @@ package com.example.project02_lastproject.member;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.example.project02_lastproject.MainActivity;
 import com.example.project02_lastproject.R;
 import com.example.project02_lastproject.common.CommonConn;
+import com.example.project02_lastproject.common.CommonVar;
 import com.example.project02_lastproject.databinding.ActivityLoginBinding;
 import com.google.gson.Gson;
 import com.google.gson.ToNumberStrategy;
@@ -31,11 +34,13 @@ public class LoginActivity extends AppCompatActivity {
             conn.addParamMap("password", binding.edtPw.getText().toString());
             conn.onExcute((isResult, data) -> {
               if(isResult){
-                  AndMemberVO vo = new Gson().fromJson(data, AndMemberVO.class);
-                  if(vo==null){
+                  CommonVar.loginInfo = new Gson().fromJson(data, AndMemberVO.class);
+                  if(CommonVar.loginInfo==null){
                       Toast.makeText(this, "아이디 비번 확인", Toast.LENGTH_SHORT).show();
                   }else{
-                      Toast.makeText(this, "성공", Toast.LENGTH_SHORT).show();
+                      //CommonVar.loginInfo = vo;
+                      Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                      startActivity(intent);
                   }
               }
             });
